@@ -47,7 +47,7 @@ public class TeamLeader extends Worker {
     public double calculatePay() {
         // Calculate pay based on Worker's calculatePay() plus the monthly bonus
 
-        return (super.calculatePay() + MONTHLY_BONUS);
+        return (super.calculatePay() + (MONTHLY_BONUS/4));
     }
 
     // Override toString method

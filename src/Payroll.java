@@ -53,7 +53,7 @@ public class Payroll {
     }
 
     private double rsp() {
-        if ( (CURRENT_YEAR )- (parseYear(emp.getHireDate()) )>2) {
+        if ((CURRENT_YEAR) - (parseYear(emp.getHireDate())) > 2) {
             return RSP_RATE * (emp.calculatePay() - ei() - cpp() - tax());
         }
         return 0.0;
@@ -101,6 +101,11 @@ public class Payroll {
 
     // Set default values method
     private void setDefaultValues() {
-        emp = null;
+        emp.setBirthDate(null);
+        emp.setFirstName(null);
+        emp.setLastName(null);
+        emp.setHireDate(null);
+        emp.setLevel(null);
+
     }
 }
