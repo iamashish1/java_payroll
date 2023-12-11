@@ -1,3 +1,4 @@
+//EXTENDING EMPLOYEE CLASS ON WORKER CLASS
 public class Worker extends Employee {
     private int shift;
     private double rate;

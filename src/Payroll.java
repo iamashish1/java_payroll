@@ -67,11 +67,11 @@ public class Payroll {
     }
 
     // FORMAT THE REPORT OUPUT IN TABULAR FORM
-    public static void printReport(ArrayList<Payroll> list) {
+    public static void printReport(ArrayList<Payroll> list, String reportDate) {
 
         System.out.println("\n***** Payroll Report *****");
 
-        System.out.println("For the week ending December 2, 2022");
+        System.out.println("For the week ending " + reportDate);
         System.out.println(
                 "---------------- -------------  --------------------------    -------------- ------------- --------------- ------------ --------------");
 

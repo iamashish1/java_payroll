@@ -7,7 +7,6 @@ import java.util.ArrayList;
  * Purpose: To calculate the payroll report based on different factors.
  */
 
-
 public class PayrollTester {
         public static void main(String[] args) {
                 // STEP 1: WELCOME MESSAGE
@@ -49,7 +48,7 @@ public class PayrollTester {
                 payrollList.add(new Payroll(teamLeader2));
 
                 // EXECUTUNG PRINTREPORT METHOD INSIDE PAYROLL CLASS
-                Payroll.printReport(payrollList);
+                Payroll.printReport(payrollList, "December 2, 2022");
 
                 // SETTING DIFFERENT REQUIREMENTS AND INSTRUCTED
 
@@ -78,6 +77,6 @@ public class PayrollTester {
                 payrollList.set(5, new Payroll(teamLeader2));
 
                 // PRINT REPORT WITH UPDATED OBJECTS
-                Payroll.printReport(payrollList);
+                Payroll.printReport(payrollList, "December 9, 2022");
         }
 }
