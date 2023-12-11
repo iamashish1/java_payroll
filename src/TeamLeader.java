@@ -1,9 +1,10 @@
+//TEAMLEADER CLASS EXTENDS WORKER 
 public class TeamLeader extends Worker {
     private static final int REQUIRED_TRAINING = 150;
     private static final double MONTHLY_BONUS = 100.0;
     private int completedTraining;
 
-    // Constructors
+    // THIS IS THE CONSTRUCTION THAT SET THE DEFAULT VALUES
     public TeamLeader() {
         super();
         setFieldDefaultValues();
@@ -15,12 +16,11 @@ public class TeamLeader extends Worker {
         setCompletedTraining(completedTraining);
     }
 
-    // Set field default values
     private void setFieldDefaultValues() {
         completedTraining = 0;
     }
 
-    // Getter and setter methods
+    // DEFINING GETTERS AND SETTERS
     public int getRequiredTraining() {
         return REQUIRED_TRAINING;
     }
@@ -37,24 +37,27 @@ public class TeamLeader extends Worker {
         this.completedTraining = completedTraining;
     }
 
-    // Calculate training left method
+    // METHOD FOR CALCULATING TRAINING LEFT
     public int calculateTrainingLeft() {
         return Math.max(0, REQUIRED_TRAINING - completedTraining);
     }
 
-    // Override calculatePay method
+    // VERRIDING CALCULATEPAY METHOD FOR TEAMLEADER AND DEFINING ITS OWN
+    // IMPLEMENTATION
     @Override
     public double calculatePay() {
-        // Calculate pay based on Worker's calculatePay() plus the monthly bonus
+        // CAULCULATE PAY WITH MONTHY BINUS DIVIDED BY 4 YIELDS WEEKLY BONUS
 
-        return (super.calculatePay() + (MONTHLY_BONUS/4));
+        return (super.calculatePay() + (MONTHLY_BONUS / 4));
     }
 
-    // Override toString method
+    // OVERRIDE TOSTRING METHOD
+    // CALL PARENT TOSTRING IMPLEMENTATION
+    // ADD ITS OWN IMPLEMENTATION
 
     @Override
     public String toString() {
         return super.toString() +
-                "\nTraining Left: " + calculateTrainingLeft();
+                "Training Left:    " + calculateTrainingLeft() + "\n";
     }
 }

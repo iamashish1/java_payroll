@@ -2,7 +2,8 @@ public class Supervisor extends Employee {
     private double salary;
     private int productionRate;
 
-    // Constructors
+    // NO ARGUMENT CONSTRUCTOR WHICH CALL THE PARENT CONSTRUCTOR WITH VALUES SET
+    // EMPTY FOE EACH ARGUMENT
     public Supervisor() {
         super("", "", "", "", "");
         setFieldDefaultValues();
@@ -15,13 +16,13 @@ public class Supervisor extends Employee {
         setProductionRate(productionRate);
     }
 
-    // Set field default values
+    // SET THE FIELD DEFAULT VALUES
     private void setFieldDefaultValues() {
         setSalary(0.0);
         setProductionRate(0);
     }
 
-    // Getter and setter methods
+    // DEFINING GETTERS AND SETTERS
     public double getSalary() {
         return salary;
     }
@@ -38,10 +39,10 @@ public class Supervisor extends Employee {
         this.productionRate = productionRate;
     }
 
-    // Calculate bonus method
+    // THE PRIVATE METHOD FOR CALCULATING BONUS
+    // BONUS IS CALCULATED BASED ON THE RPODUCTION RATE
     private double calculateBonus() {
-        // Implementation of bonus calculation based on productionRate
-        // You may need to adjust this based on the project specifications
+
         if (productionRate < 75) {
             return 0.0;
         } else if (productionRate <= 100) {
@@ -51,18 +52,19 @@ public class Supervisor extends Employee {
         }
     }
 
-    // Override calculatePay method
+    // OVERRIDE CALCULATE PAY AND DEFINE IMPLEMENTATION
     @Override
     public double calculatePay() {
         return (getSalary() + calculateBonus()) / 50;
     }
 
-    // Override toString method
+    // OVERRIDE TOSTRING METHOD CALL SUPER.TOSTRING() AND CONCAT WITH SOME OTHER
+    // VALUES
     @Override
     public String toString() {
         return super.toString() +
-                "Salary: $" + getSalary() +
-                "\nProduction Rate: " + getProductionRate() + "%" +
-                "\n Gross Pay:" + (calculatePay()) + "\n";
+                "Salary:          $" + getSalary() + "\n" +
+                "Production Rate: " + getProductionRate() + "%" + "\n" +
+                "Gross Pay:       " + (calculatePay()) + "\n";
     }
 }

@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class PayrollTester {
         public static void main(String[] args) {
-                // Step 1: Write a brief message to the screen
+                // STEP 1: WELCOME MESSAGE
                 System.out.println("Welcome to the Payroll tester");
                 System.out.println("--------------------------------------------------");
 
-                // Step 2: Create six Employee objects
+                // CREATING EMPLOYEE OBJECTS
                 Supervisor supervisor1 = new Supervisor("Supervisor", "D'arcy", "French", "2001 10 31", "1976 09 08",
                                 176000,
                                 105);
@@ -23,7 +23,7 @@ public class PayrollTester {
                                 45.50,
                                 45, 75);
 
-                // Step 3: Print each object using toString()
+                // PRINTING OBJECTS USING OVERRIDDEN TOSTRING
                 System.out.println(supervisor1.toString());
                 System.out.println(worker1.toString());
                 System.out.println(teamLeader1.toString());
@@ -31,7 +31,7 @@ public class PayrollTester {
                 System.out.println(worker2.toString());
                 System.out.println(teamLeader2.toString());
 
-                // Step 4: Create an ArrayList of Payroll objects
+                // CREATING AN ARRAYLIST WITH CREATED OBJECTS
                 ArrayList<Payroll> payrollList = new ArrayList<>();
                 payrollList.add(new Payroll(supervisor1));
                 payrollList.add(new Payroll(worker1));
@@ -40,37 +40,28 @@ public class PayrollTester {
                 payrollList.add(new Payroll(worker2));
                 payrollList.add(new Payroll(teamLeader2));
 
-                // Step 5: Print the list calling the static method printReport()
+                // EXECUTUNG PRINTREPORT METHOD INSIDE PAYROLL CLASS
                 Payroll.printReport(payrollList);
 
-                // Step 6: Update the Employee objects for the next pay period
-                // a. D’arcy French’s production rate this week is 115%
+                // SETTING DIFFERENT REQUIREMENTS AND INSTRUCTED
+
                 supervisor1.setProductionRate(115);
 
-                // b. Janelle Birch’s production rate is 110%
                 supervisor2.setProductionRate(110);
 
-                // c. Daniel Van Patter worked 44 hours and received an increase in his hourly
-                // rate of $1.50
                 worker1.setHours(44);
                 worker1.setRate(worker1.getRate() + 1.50);
 
-                // d. Thomas O’Neil worked 37 hours
                 worker2.setHours(37);
 
-                // e. Judy Campbell worked 42.75 hours and completed an additional 10 hours of
-                // training
                 teamLeader1.setHours(42.75);
                 teamLeader1.setCompletedTraining(teamLeader1.getCompletedTraining() + 10);
 
-                // f. John Greene worked 44 hours and completed an additional 6 hours of
-                // training
-                // John was switched to the day shift this week
                 teamLeader2.setHours(44);
                 teamLeader2.setCompletedTraining(teamLeader2.getCompletedTraining() + 6);
                 teamLeader2.setShift(1);
 
-                // Step 7: Update the Payroll ArrayList with the updated Employee objects
+                // UPDATING CREATED ARRAYLIST WTIH UPDATED OBJECTS
                 payrollList.set(0, new Payroll(supervisor1));
                 payrollList.set(1, new Payroll(worker1));
                 payrollList.set(2, new Payroll(teamLeader1));
@@ -78,7 +69,7 @@ public class PayrollTester {
                 payrollList.set(4, new Payroll(worker2));
                 payrollList.set(5, new Payroll(teamLeader2));
 
-                // Step 8: Print the updated list calling the static method printReport()
+                // PRINT REPORT WITH UPDATED OBJECTS
                 Payroll.printReport(payrollList);
         }
 }

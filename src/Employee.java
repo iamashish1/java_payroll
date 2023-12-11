@@ -1,5 +1,6 @@
 import java.util.Random;
 
+//DEFINING EMPLOYEE ABSTRACT CLASS AND DEFINING METHODS AND PROPERTIES BASED ON UML DIAGRAM
 public abstract class Employee {
     private String level;
     private String firstName;
@@ -8,7 +9,6 @@ public abstract class Employee {
     private String birthdate;
     private String employeeNumber;
 
-    // Constructor
     public Employee(String level, String firstName, String lastName, String hireDate, String birthdate) {
         this.level = level;
         this.firstName = firstName;
@@ -18,7 +18,7 @@ public abstract class Employee {
         setEmployeeNumber();
     }
 
-    // Getters and Setters
+    // DEFINING GETTERS AND SETTERS
     public String getLevel() {
         return level;
     }
@@ -63,7 +63,8 @@ public abstract class Employee {
         return employeeNumber;
     }
 
-    // Private method to generate a unique employee number
+    // THIS METHOD IS PRIVATE
+    // RESPONSIBLE FOR GENERATING RANDOM EMPLOYEE CODE
     private void setEmployeeNumber() {
         this.employeeNumber = generateLevelCode() + "-" +
                 lastName.toUpperCase().substring(0, 2) +
@@ -71,7 +72,8 @@ public abstract class Employee {
                 generateRandomNumber(10000, 99999);
     }
 
-    // Private method to generate the level code
+    // HELPER METHOD WHICH CHECKS THE LEVEL OF THE EMPLOYEES AND ASSIGNS 3-LETTER
+    // UNIQUE CODE BASED ON THE LEVEL
     private String generateLevelCode() {
         switch (level.toLowerCase()) {
             case "supervisor":
@@ -85,22 +87,21 @@ public abstract class Employee {
         }
     }
 
-    // Abstract method to calculate pay
+    // THIS IS AN ABSTRACT METHOD AND WILL BE IMPLEMENTATED BY EVERY CALSS THAT
+    // EXTENDS EMPLOYEE CLASS
     public abstract double calculatePay();
 
-    // toString method to represent Employee fields
+    // OVERRIDING TOSTRING METHOD WITH ALL THE FIELDS AND VALUES FOR OUTPUT
     @Override
     public String toString() {
-        int labelWidth = 15;
-        int spaceWidth = 10;
 
         return String.format(
-                "%-" + labelWidth + "s%" + spaceWidth + "s%s\n" +
-                        "%-" + labelWidth + "s%" + spaceWidth + "s%s\n" +
-                        "%-" + labelWidth + "s%" + spaceWidth + "s%s\n" +
-                        "%-" + labelWidth + "s%" + spaceWidth + "s%s\n" +
-                        "%-" + labelWidth + "s%" + spaceWidth + "s%s\n" +
-                        "%-" + labelWidth + "s%" + spaceWidth + "s%s\n",
+                "%-15s%-2s%s\n" +
+                        "%-15s%-2s%s\n" +
+                        "%-15s%-2s%s\n" +
+                        "%-15s%-2s%s\n" +
+                        "%-15s%-2s%s\n" +
+                        "%-15s%-2s%s\n",
                 "Employee Level:", "", level,
                 "First Name:", "", firstName,
                 "Last Name:", "", lastName,
@@ -109,7 +110,8 @@ public abstract class Employee {
                 "Employee Number:", "", employeeNumber);
     }
 
-    // Helper method to generate a random number between min and max (inclusive)
+    // SUB-FUNCTION TO HELP WITH RANDOM NUMBER GENERATION FOR EMPLOYEE CODE
+    // WE MAKE USE OF RANDOM() CLASS
     private int generateRandomNumber(int min, int max) {
         Random random = new Random();
         return random.nextInt((max - min) + 1) + min;

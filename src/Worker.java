@@ -3,12 +3,14 @@ public class Worker extends Employee {
     private double rate;
     private double hours;
 
-    // Constructors
+    // NO ARGUMENT CONSTRUCTOR
+    // SETS ALL FIELDS TO EMPTY VALUES INITIALLY
     public Worker() {
         super("", "", "", "", "");
         setFieldDefaultValues();
     }
 
+    // ARGUMENT CONSTRUCTOR
     public Worker(String level, String firstName, String lastName, String hireDate, String birthdate,
             int shift, double rate, double hours) {
         super(level, firstName, lastName, hireDate, birthdate);
@@ -17,14 +19,14 @@ public class Worker extends Employee {
         setHours(hours);
     }
 
-    // Set field default values
+    // METHOD FOR SETTING DEFAULT VALUES TO 0
     private void setFieldDefaultValues() {
         setShift(0);
         setRate(0.0);
         setHours(0.0);
     }
 
-    // Getter and setter methods
+    // GETTERS AND SETTERS FOR WORKER CLASS
     public int getShift() {
         return shift;
     }
@@ -63,12 +65,13 @@ public class Worker extends Employee {
         this.hours = hours;
     }
 
-    // Override calculatePay method
+    // OVERRIDE THE METHOD AND WRITE OWN IMPLEMENTTAITON
     @Override
     public double calculatePay() {
         double pay = getRate() * getHours();
 
-        // Apply shift premium for evening shift
+        // SHIFT IS EITHER 1 OR 2
+        // CALCULATE PAY BASED ON WHAT SHIFT IT IS
         if (getShift() == 2) {
             pay *= 1.03;
         }
@@ -76,14 +79,14 @@ public class Worker extends Employee {
         return pay;
     }
 
-    // Override toString method
+    // USING PARENT PLUS OWN IMPLEMENTATION
     @Override
     public String toString() {
         return super.toString() +
-                "Shift: " + getShiftText() + "\n" +
-                "Hourly Pay Rate: $" + getRate() + "\n" +
-                "Hours Worked: " + getHours() + "\n" +
-                "Gross Pay:" + calculatePay() + "\n";
+                "Shift:           " + getShiftText() + "\n" +
+                "Hourly Pay Rate:  $" + getRate() + "\n" +
+                "Hours Worked:     " + getHours() + "\n" +
+                "Gross Pay:        " + calculatePay() + "\n";
 
     }
 }

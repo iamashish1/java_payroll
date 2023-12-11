@@ -1,26 +1,27 @@
 import java.util.ArrayList;
 
 public class Payroll {
-    // Constants
+    // CONSTANTS FOR LATER CALCULATIONS
     private static final double EI_RATE = 0.0188;
     private static final double CPP_RATE = 0.0495;
     private static final double TAX_RATE = 0.2;
     private static final double RSP_RATE = 0.04;
     private static final int CURRENT_YEAR = 2023;
 
-    // Fields
+    // PRIVATE EMPLOYEE FIELD
     private Employee emp;
 
-    // Constructors
+    // 0-ARGUMENT CONSTRUCTOR
     public Payroll() {
         setDefaultValues();
     }
 
+    // 1-ARGUMENT CONSTRUCTOR
     public Payroll(Employee emp) {
         setEmp(emp);
     }
 
-    // Getter and setter methods
+    // GETTER AND SETTERS
     public Employee getEmp() {
         return emp;
     }
@@ -29,14 +30,14 @@ public class Payroll {
         this.emp = emp;
     }
 
-    // Calculate net pay method
+    // CALCULATE NETPAY BASED ON VARIOUS DEDUCTIONS
     public double calculateNetPay() {
         double grossPay = emp.calculatePay();
         double deductions = ei() + cpp() + tax() + rsp();
         return grossPay - deductions;
     }
 
-    // Private methods for calculating deductions
+    // DEFINING EI,CPP,TAX,RSP AND CALCULATING DEDUCTIONS
     private double ei() {
         return EI_RATE * emp.calculatePay();
     }
@@ -59,17 +60,26 @@ public class Payroll {
         return 0.0;
     }
 
-    // Helper method to parse the year from the date string
+    // THIS IS A HELPER METHOD FOR PARSING DARE INTO INTEGER
     private int parseYear(String date) {
         String[] dateParts = date.split(" ");
         return Integer.parseInt(dateParts[0]);
     }
 
-    // Static method to print the payroll report
+    // FORMAT THE REPORT OUPUT IN TABULAR FORM
     public static void printReport(ArrayList<Payroll> list) {
-        System.out.println("for the week ending December 2, 2022");
-        System.out.printf("%-10s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",
+
+        System.out.println("\n***** Payroll Report *****");
+
+        System.out.println("For the week ending December 2, 2022");
+        System.out.println(
+                "---------------- -------------  --------------------------    -------------- ------------- --------------- ------------ --------------");
+
+        System.out.printf("%-18s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",
                 "Level", "First", "Last", "Gross Pay", "EI", "CPP", "Tax", "RSP", "Net Pay");
+        System.out.println(
+                "---------------- -------------  --------------------------    -------------- ------------- --------------- ------------ --------------");
+
         double totalGrossPay = 0.0, totalEI = 0.0, totalCPP = 0.0, totalTax = 0.0, totalRSP = 0.0, totalNetPay = 0.0;
 
         for (Payroll payroll : list) {
@@ -81,11 +91,11 @@ public class Payroll {
             double rsp = payroll.rsp();
             double netPay = payroll.calculateNetPay();
 
-            System.out.printf("%-10s%-15s%-15s$%-14.2f$%-14.2f$%-14.2f$%-14.2f$%-14.2f$%-14.2f\n",
+            System.out.printf("%-18s%-15s%-15s$%-14.2f$%-14.2f$%-14.2f$%-14.2f$%-14.2f$%-14.2f\n",
                     employee.getLevel(), employee.getFirstName(), employee.getLastName(),
                     grossPay, ei, cpp, tax, rsp, netPay);
 
-            // Update totals
+            // PLUS TOTAL
             totalGrossPay += grossPay;
             totalEI += ei;
             totalCPP += cpp;
@@ -94,12 +104,19 @@ public class Payroll {
             totalNetPay += netPay;
         }
 
-        // Print totals
-        System.out.printf("\n%-40s$%-14.2f$%-14.2f$%-14.2f$%-14.2f$%-14.2f$%-14.2f\n",
-                "Total", totalGrossPay, totalEI, totalCPP, totalTax, totalRSP, totalNetPay);
+        System.out.println(
+                "---------------- -------------  --------------------------    -------------- ------------- --------------- ------------ --------------");
+
+        // PRINT TOTAL WITH FORMAT IN TABULAR FORM
+        System.out.printf("\n%-20s%-15s%-13s$%-14.2f$%-14.2f$%-14.2f$%-14.2f$%-14.2f$%-14.2f\n",
+                "Total", "", "",
+                totalGrossPay, totalEI, totalCPP, totalTax, totalRSP, totalNetPay);
+        System.out.println(
+                "---------------- -------------  --------------------------    -------------- ------------- --------------- ------------ --------------");
+
     }
 
-    // Set default values method
+    // SETTING DEFAULT VALUES METHODS
     private void setDefaultValues() {
         emp.setBirthDate(null);
         emp.setFirstName(null);
