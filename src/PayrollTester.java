@@ -1,5 +1,13 @@
 import java.util.ArrayList;
 
+/*
+ * Project-2
+ * Prog. Mobile Application Development
+ * Group Members: Ashish Koirala, Anup Rayamajhi, Nazmul Nayeem
+ * Purpose: To calculate the payroll report based on different factors.
+ */
+
+
 public class PayrollTester {
         public static void main(String[] args) {
                 // STEP 1: WELCOME MESSAGE
